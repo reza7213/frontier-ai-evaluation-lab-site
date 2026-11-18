@@ -1,6 +1,6 @@
 # Frontier AI Evaluation Lab
 
-An independent applied AI project by **Reza Madad**. Pilot-v2 experiments ran November 16, 2026. Public showcase prepared November 17, 2026.
+An applied AI project by **Reza Madad**. 
 
 ## The product problem
 
