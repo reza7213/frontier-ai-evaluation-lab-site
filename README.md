@@ -17,6 +17,6 @@ No account, tracking scripts, visitor storage, API credentials, private review h
 The project brief and evidence summary describe pilot-v2 experiments run November 16, 2026. Independent human calibration and real-world validation remain open.
 
 
-## Presentation formats
+## Presentation
 
-The first presentation link opens `project-brief.pdf` in the browser. The editable `project-brief.pptx` remains available under Project Materials. Both use the current project title. The public URL retains the original repository slug to preserve shared links.
+The public presentation is available as `project-brief.pdf`. The public site does not distribute a PowerPoint file.
