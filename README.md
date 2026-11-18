@@ -1,6 +1,6 @@
 # Frontier AI Evaluation Lab · public showcase
 
-Public project page by Reza Madad. The full experimental repository remains private. This repository contains only the static showcase, a deterministic demo over synthetic facts, and selected public project evidence.
+Public project page by Reza Madad. The completed first phase studies Qwen3-0.6B, its LoRA/QLoRA variants and a separate deterministic tool workflow on synthetic tasks. It is a starting point for broader model evaluation; multiple-frontier-model benchmarks and actual operating-cost comparisons have not been run. The full experimental repository remains private. This repository contains only the static showcase, a deterministic demo over synthetic facts, and selected public project evidence.
 
 Published site: https://reza7213.github.io/frontier-ai-evaluation-lab-site/
 

@@ -1,21 +1,23 @@
 # Frontier AI Evaluation Lab
 
-An applied AI project by **Reza Madad**. 
+An applied AI project by **Reza Madad**. **Phase 1: an initial small-model evaluation study.** 
 
-## The product problem
+## The broader goal and completed starting point
 
-Choosing an LLM requires evidence about accuracy, reliability, latency and cost on the tasks a product actually needs to perform. Teams need to know whether answers are supported, how failures are handled, and what each verified successful task costs. Outcomes depend on prompts, retrieval, tools and infrastructure as well as the model itself.
+The broader goal is a reproducible lab for comparing AI models on accuracy, reliability, latency and cost per verified successful task, then testing targeted improvements.
 
-I built this lab to make those decisions through repeatable experiments: establish a baseline, compare configurations, inspect failure traces, test targeted improvements, and rerun fixed evaluation and regression checks.
+**The completed first study covers one small model family: Qwen3-0.6B and its LoRA/QLoRA variants, alongside a separate deterministic financial-tool workflow.** All tasks and financial documents are synthetic. We did not benchmark multiple distinct frontier LLMs or measure actual production cost.
 
-The long-term remit includes cross-provider frontier-model comparisons. **The experiments completed today cover Qwen3-0.6B, LoRA/QLoRA variants and a separate deterministic financial-tool workflow.** Actual production-cost and cross-provider comparisons remain the next phase; no results for untested frontier models are claimed.
+The work establishes an initial evaluation workflow: record baselines, compare adapter variants under matched generation settings, inspect failure traces, test source-bound calculation and verification, and preserve regression evidence. Cross-provider model comparisons, measured operating costs, real public reports and independent human validation are planned extensions.
 
-## Evaluation framework
+Teams ultimately need evidence about task correctness, source support, failure handling, latency and the total cost of a successful answer. The framework below separates those broader goals from the narrower evidence collected in this first study.
 
-- **Accuracy and grounding:** task correctness, source support, exact reference matching, typed calculations and citation-ID coverage. These checks have distinct scopes; identifier existence does not prove semantic support.
-- **Reliability and safety:** missing facts, appropriate abstention, tool failures, bounded retries, injection and restricted evidence.
-- **Latency and resources:** synchronized generation latency, throughput, context length, GPU memory and profiler evidence on a defined workload.
-- **Cost and value:** total compute, retries and human-review cost divided by verified successful tasks. The framework is defined, but actual production cost has not been measured.
+## Evaluation goals and current evidence
+
+- **Accuracy and grounding:** current checks are exact reference matching, AI-assisted review of test nonmatches, typed calculations and citation-ID coverage. They do not establish broad, independently human-validated accuracy or semantic citation precision.
+- **Reliability and safety:** known synthetic cases exercise missing facts, abstention, tool failures, bounded retries, injection and restricted evidence. General real-world reliability remains untested.
+- **Latency and resources:** current evidence includes synchronized T4 generation latency, aggregate throughput, training-memory measurements and profiling on defined workloads. No production-traffic or multi-provider serving comparison was run.
+- **Cost and value:** planned measurement is total compute, retries and human-review cost divided by verified successful tasks. Only a framework and illustrative value assumptions were prepared; actual operating cost was not measured.
 
 One motivating failure was a model calling dollar operating income an operating margin despite citing existing documents. The synthetic Aurora and Nova reports permit a direct check: Aurora’s FY2025 margin is 35 / 150 × 100 = **23.33%**; Nova’s is 14 / 140 × 100 = **10.00%**, a **13.33 percentage-point gap**.
 
@@ -27,7 +29,7 @@ One motivating failure was a model calling dollar operating income an operating 
 
 **Evidence and operations.** JSONL traces preserve prompts, supplied documents, configurations, responses, tokens, timing and errors. Frozen data, negative cases, GPU telemetry, a profiler trace and automated regression checks support reproducibility in the private experimental repository.
 
-## Actual results
+## Results from the first study
 
 | Experiment | Outcome | Scope |
 |---|---|---|
@@ -43,7 +45,7 @@ One motivating failure was a model calling dollar operating income an operating 
 
 These are separate systems and test mixes. The 100/100 fixture score is not an LLM accuracy score or evidence of general research reliability. LoRA’s one-case validation lead over QLoRA is not statistically established superiority.
 
-## What improved and how it was checked
+## Measured changes and unresolved errors
 
 **Reference formatting and citation coverage.** With matched validation prompts and decoding, LoRA produced 44/60 exact normalized reference matches versus 0/60 for the base model. Required citation-ID coverage rose from 0/60 to 60/60. These are measured changes in reference compliance, not a claim that the base model had zero correct facts or that LoRA solved factual reasoning.
 
