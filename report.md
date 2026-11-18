@@ -4,9 +4,20 @@ An applied AI project by **Reza Madad**.
 
 ## The product problem
 
-A small model answered a financial comparison by calling operating income in dollars an operating margin. Its document IDs existed, but the numeric interpretation was wrong. The project investigates whether model adaptation and explicit tool verification can address this failure.
+Choosing an LLM requires evidence about accuracy, reliability, latency and cost on the tasks a product actually needs to perform. Teams need to know whether answers are supported, how failures are handled, and what each verified successful task costs. Outcomes depend on prompts, retrieval, tools and infrastructure as well as the model itself.
 
-The example companies, Aurora AI and Nova Cloud, and all financial documents are synthetic. Aurora’s FY2025 operating margin is 35 / 150 × 100 = **23.33%**. Nova’s is 14 / 140 × 100 = **10.00%**, a **13.33 percentage-point gap**.
+I built this lab to make those decisions through repeatable experiments: establish a baseline, compare configurations, inspect failure traces, test targeted improvements, and rerun fixed evaluation and regression checks.
+
+The long-term remit includes cross-provider frontier-model comparisons. **The experiments completed today cover Qwen3-0.6B, LoRA/QLoRA variants and a separate deterministic financial-tool workflow.** Actual production-cost and cross-provider comparisons remain the next phase; no results for untested frontier models are claimed.
+
+## Evaluation framework
+
+- **Accuracy and grounding:** task correctness, source support, exact reference matching, typed calculations and citation-ID coverage. These checks have distinct scopes; identifier existence does not prove semantic support.
+- **Reliability and safety:** missing facts, appropriate abstention, tool failures, bounded retries, injection and restricted evidence.
+- **Latency and resources:** synchronized generation latency, throughput, context length, GPU memory and profiler evidence on a defined workload.
+- **Cost and value:** total compute, retries and human-review cost divided by verified successful tasks. The framework is defined, but actual production cost has not been measured.
+
+One motivating failure was a model calling dollar operating income an operating margin despite citing existing documents. The synthetic Aurora and Nova reports permit a direct check: Aurora’s FY2025 margin is 35 / 150 × 100 = **23.33%**; Nova’s is 14 / 140 × 100 = **10.00%**, a **13.33 percentage-point gap**.
 
 ## What was built
 
@@ -31,6 +42,14 @@ The example companies, Aurora AI and Nova Cloud, and all financial documents are
 | Qwen group-relative reward smoke | Eight completions, two groups, zero optimizer updates | All-zero rewards/advantages; no learning improvement |
 
 These are separate systems and test mixes. The 100/100 fixture score is not an LLM accuracy score or evidence of general research reliability. LoRA’s one-case validation lead over QLoRA is not statistically established superiority.
+
+## What improved and how it was checked
+
+**Reference formatting and citation coverage.** With matched validation prompts and decoding, LoRA produced 44/60 exact normalized reference matches versus 0/60 for the base model. Required citation-ID coverage rose from 0/60 to 60/60. These are measured changes in reference compliance, not a claim that the base model had zero correct facts or that LoRA solved factual reasoning.
+
+**The observed arithmetic failure.** The verified-tool workflow computes 23.33% and 10.00% margins, checks the 13.33 percentage-point gap and preserves operand provenance. The separate 100/100 held-out fixture score applies to this bounded deterministic workflow and its familiar synthetic formats.
+
+**Failures that remain.** Fourteen LoRA test failures remain after the fixed tolerance is applied in AI review. The small grader rejected both correct diagnostic examples. Qwen reward sampling produced no optimizer updates. These findings direct the next experiments rather than being omitted from the comparison.
 
 ## GPU evidence
 
