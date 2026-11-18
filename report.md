@@ -14,7 +14,7 @@ An applied AI project by **Reza Madad**. **Phase 1: an initial small-model evalu
 
 *Initial synthetic-data study; no production readiness claimed.*
 
-[View the five-minute presentation](project-brief.pptx)
+[View the five-minute presentation](project-brief.pdf)
 
 ## The broader goal and completed starting point
 
@@ -87,4 +87,4 @@ Before a production decision, obtain the second independent reviewer’s actual 
 
 The full experimental repository remains private. This public repository provides selected evidence, a project presentation and a browser-only calculation demonstration. That demo uses five fixed synthetic documents; it performs no model inference or live web retrieval.
 
-[Public evidence summary](evidence.json) · [Five-minute presentation](project-brief.pptx) · [Reza Madad on LinkedIn](https://www.linkedin.com/in/reza-madad/)
+[Public evidence summary](evidence.json) · [Five-minute presentation](project-brief.pdf) · [Reza Madad on LinkedIn](https://www.linkedin.com/in/reza-madad/)

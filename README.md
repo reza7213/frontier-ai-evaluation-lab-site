@@ -15,3 +15,8 @@ The browser demo performs deterministic calculations on five fixed synthetic doc
 No account, tracking scripts, visitor storage, API credentials, private review history or model weights are included. Standard GitHub hosting logs are governed by GitHub.
 
 The project brief and evidence summary describe pilot-v2 experiments run November 16, 2026. Independent human calibration and real-world validation remain open.
+
+
+## Presentation formats
+
+The first presentation link opens `project-brief.pdf` in the browser. The editable `project-brief.pptx` remains available under Project Materials. Both use the current project title. The public URL retains the original repository slug to preserve shared links.
