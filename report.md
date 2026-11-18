@@ -1,6 +1,20 @@
-# Frontier AI Evaluation Lab
+# AI Model & Workflow Evaluation Lab
 
 An applied AI project by **Reza Madad**. **Phase 1: an initial small-model evaluation study.** 
+
+## Executive summary
+
+**The question.** How do model adaptation and explicit verification address incorrect calculations, unsupported answers and misleading citations?
+
+**What I built.** A reproducible study of Qwen3-0.6B, LoRA/QLoRA variants and a separate verified-tool workflow, with synthetic research tasks, source-linked traces, GPU profiling and 57 regression tests.
+
+**Three findings.** LoRA increased exact validation reference matches from 0/60 to 44/60, but arithmetic errors remained. An observed margin error passed an ID-only citation check, showing why valid references do not establish correctness. The experimental grader rejected both correct diagnostic examples, making it unsuitable as an automated release gate.
+
+**Proposed direction.** Use verified calculations and visible source evidence for numeric answers. Keep automated judging advisory until independently calibrated. Broader model comparisons, real-report evaluation and measured operating costs are planned extensions.
+
+*Initial synthetic-data study; no production readiness claimed.*
+
+[View the five-minute presentation](project-brief.pptx)
 
 ## The broader goal and completed starting point
 
